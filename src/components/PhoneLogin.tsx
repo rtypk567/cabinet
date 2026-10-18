@@ -120,7 +120,7 @@ export function PhoneLogin({ onDone }: { onDone: () => void }) {
           placeholder="••••••"
           
           value={code}
-         onChange={(e) => setCode(e.target.value)};
+         onChange={(e) => setCode(e.target.value)}
           autoFocus
           required
         />
