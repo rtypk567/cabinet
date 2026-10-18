@@ -1,6 +1,5 @@
 import { LoginForm } from "@/components/LoginForm";
 import { Logo } from "@/components/Logo";
-import { getCodeSender } from "@/lib/sms";
 import { getTelegramBot } from "@/lib/telegram-bot";
 
 // Страница зависит от настроек сервера (токен бота, канал кодов), поэтому строится на каждый запрос.
@@ -8,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 export default async function LoginPage() {
   const bot = await getTelegramBot();
-  const phoneEnabled = getCodeSender() !== null;
+     const phoneEnabled = true;
   const dev = process.env.NODE_ENV !== "production";
 
   return (
