@@ -69,8 +69,8 @@ export function LoginForm({
           <button type="button" aria-pressed={method === "email"} onClick={() => setMethod("email")}>
             Почта
           </button>
-          <button type="button" aria-pressed={method === "phone"} onClick={() => setMethod("phone")}>
-            Telegram
+          <button type="button" className="seg-tg" aria-pressed={method === "phone"} onClick={() => setMethod("phone")}>
+            Телеграм
           </button>
         </div>
       )}
