@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export function PhoneLogin() {
+export function PhoneLogin({ onDone }: { onDone?: () => void }) {
   const router = useRouter();
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState("");
@@ -66,8 +66,13 @@ export function PhoneLogin() {
       if (!res.ok) throw new Error(data.error || "Неверный код или пароль");
       
       // Если успех — редирект в кабинет
-      router.push("/"); 
-      router.refresh();
+           // Если успех — редирект в кабинет
+      if (onDone) {
+        onDone();
+      } else {
+        router.push("/"); 
+        router.refresh();
+      }
     } catch (err: any) {
       setError(err.message);
     } finally {
