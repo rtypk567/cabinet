@@ -26,3 +26,5 @@ export function codeMatches(phone: string, code: string, storedHash: string): bo
   const b = Buffer.from(storedHash, "hex");
   return a.length === b.length && timingSafeEqual(a, b);
 }
+
+export const CODE_LENGTH = 6;
