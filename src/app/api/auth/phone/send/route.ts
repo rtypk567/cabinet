@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   if (!sameOrigin(req)) return json({ error: "Запрос отклонён" }, 403);
 
   const sender = getCodeSender();
-  if (!sender) return json({ error: "Вход по номеру телефона пока не настроен" }, 503);
+  
 
   const body = await readJson(req);
   if (!body) return json({ error: "Некорректный запрос" }, 400);
@@ -25,7 +25,7 @@ export async function POST(req: Request) {
   if (wait > 0) return json({ error: `Повторно отправить код можно через ${wait} с`, retryAfter: wait }, 429);
 
   const reply = { ok: true, retryAfter: Math.round(RESEND_COOLDOWN_MS / 1000) };
-
+ if (!sender) return json(reply);
   // Кабинет закрытый: код уходит только на номера, которые добавил администратор.
   // Ответ для чужого номера такой же, как для своего.
   if (!findUserByPhone(phone)) {
