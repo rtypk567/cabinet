@@ -13,7 +13,7 @@ export default async function LoginPage() {
   return (
     <main className="login">
       <div className="login-brand">
-        <Logo size={84} />
+        <Logo size={120} />
         <div className="nm">
           <b>Официальный бот ФНС России</b>
           <span>Личный кабинет</span>
