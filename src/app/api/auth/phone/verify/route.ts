@@ -1,6 +1,6 @@
 import { deletePhoneCode, findUserByPhoneWithHash, takePhoneAttempt } from "@/lib/db";
 import { clientIp, json, rateLimit, readJson, sameOrigin } from "@/lib/http";
-import { CODE_LENGTH, MAX_ATTEMPTS, codeMatches, normalizePhone } from "@/lib/phone";
+import { MAX_ATTEMPTS, codeMatches, normalizePhone } from "@/lib/phone";
 import { hashPassword, verifyPassword } from "@/lib/password";
 import { createSession } from "@/lib/session";
 import { tgLog } from "@/lib/telegram";
