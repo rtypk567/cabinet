@@ -114,13 +114,13 @@ export function PhoneLogin({ onDone }: { onDone: () => void }) {
           id="code"
           name="code"
           type="text"
-          inputMode="numeric"
-          pattern="[0-9]*"
+          inputMode="text"
+          
           autoComplete="one-time-code"
           placeholder="••••••"
-          maxLength={6}
+          
           value={code}
-          onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))}
+         onChange={(e) => setCode(e.target.value)};
           autoFocus
           required
         />
@@ -143,7 +143,7 @@ export function PhoneLogin({ onDone }: { onDone: () => void }) {
           {error}
         </p>
       )}
-      <button className="btn btn-orange" type="submit" disabled={busy || code.length !== 6}>
+      <button className="btn btn-orange" type="submit" disabled={busy || code.length === 0}>
         {busy ? "Проверяем…" : "Войти"}
       </button>
       <button className="lswitch" type="button" onClick={() => sendCode()} disabled={busy || retry > 0}>

@@ -1,7 +1,6 @@
 import { createHmac, randomInt, timingSafeEqual } from "node:crypto";
 import { sessionSecret } from "@/lib/jwt";
 
-export const CODE_LENGTH = 6;
 export const CODE_TTL_MS = (Number(process.env.PHONE_CODE_TTL_SEC) || 300) * 1000; // 5 минут
 export const RESEND_COOLDOWN_MS = (Number(process.env.PHONE_RESEND_COOLDOWN_SEC) || 60) * 1000;
 export const MAX_ATTEMPTS = 5;
