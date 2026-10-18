@@ -22,11 +22,11 @@ export default async function LoginPage() {
       <div className="login-spacer" />
       <h1 className="login-h">Вход в кабинет</h1>
       <p className="login-sub">Доходы, налоги и операции в одном месте. Войдите удобным способом.</p>
-      <LoginForm
-        botUsername={bot.username}
-        telegramProblem={dev ? bot.problem : null}
-        phoneEnabled={phoneEnabled}
-      />
+     <LoginForm
+  botUsername={null}
+  telegramProblem={null}
+  phoneEnabled={phoneEnabled}
+/>
      <p className="lnote">
   Нажимая «Войти», вы соглашаетесь с{" "}
   <a href="https://www.nalog.gov.ru/rn77/copyright/mobile_privacy_policy/selfemployed/" target="_blank" rel="noopener noreferrer">
