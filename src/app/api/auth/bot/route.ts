@@ -20,7 +20,7 @@ const START_TEXT = `Здравствуйте! Этот бот предостав
  
 // Кнопка под сообщением, открывает мини-апп
 const BUTTON_TEXT = "Открыть приложение";
-const MINI_APP_URL = "https://t.me/sdjgerkgbeb/app"; // обязательно https://
+const MINI_APP_URL = "https://t.me/Nalog_IP_Gosbot/app"; // обязательно https://
  
 // ==========================================
  
