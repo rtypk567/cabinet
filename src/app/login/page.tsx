@@ -21,7 +21,7 @@ export default async function LoginPage() {
       </div>
       <div className="login-spacer" />
       <h1 className="login-h">Вход в кабинет</h1>
-      <p className="login-sub">Доходы, налоги и операции в одном месте. Войдите удобным способом.</p>
+      <p className="login-sub">Доходы, налоги и операции в одном месте, войдите удобным способом</p>
      <LoginForm
   botUsername={null}
   telegramProblem={null}
